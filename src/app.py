@@ -19,7 +19,6 @@ if __name__ == "__main__":
 
             try:
                 orderbook = kc.collect_orderbook()
-                print(time.time(), ticker, orderbook)
                 db.push_orderbook(ticker=ticker, orderbook=orderbook)
             except Exception as e:
                 print(time.time(), e)
