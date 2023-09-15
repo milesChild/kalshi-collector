@@ -1,9 +1,9 @@
 # imports
 import sys
 import time
-from src.kalshi_collector import KalshiCollector
-from src.db import DB
-from credentials import DB_PASSWORD, DB_USERNAME
+from kalshi_collector import KalshiCollector
+from db import DB
+from src.credentials import DB_USERNAME, DB_PASSWORD, DATABASE_NAME, RDS_HOSTNAME, KALSHI_EMAIL, KALSHI_PASSWORD
 
 if __name__ == "__main__":
 
@@ -12,13 +12,14 @@ if __name__ == "__main__":
 
     while True:
 
-        collector = KalshiCollector(ticker=ticker)
-        db = DB(username=DB_USERNAME, password=DB_PASSWORD)
+        kc = KalshiCollector(ticker=ticker, username=KALSHI_EMAIL, password=KALSHI_PASSWORD)
+        db = DB(username=DB_USERNAME, password=DB_PASSWORD, host=RDS_HOSTNAME, database_name=DATABASE_NAME)
 
         while True:
 
             try:
-                orderbook = collector.collect_orderbook()
+                orderbook = kc.collect_orderbook()
+                print(time.time(), ticker, orderbook)
                 db.push_orderbook(ticker=ticker, orderbook=orderbook)
             except Exception as e:
                 print(time.time(), e)
