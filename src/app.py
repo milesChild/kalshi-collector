@@ -3,7 +3,7 @@ import sys
 import time
 from kalshi_collector import KalshiCollector
 from db import DB
-from src.credentials import DB_USERNAME, DB_PASSWORD, DATABASE_NAME, RDS_HOSTNAME, KALSHI_EMAIL, KALSHI_PASSWORD
+from credentials import DB_USERNAME, DB_PASSWORD, DATABASE_NAME, RDS_HOSTNAME, KALSHI_EMAIL, KALSHI_PASSWORD
 
 if __name__ == "__main__":
 
