@@ -29,7 +29,7 @@ class KalshiClient:
 
     def rate_limit(self) -> None:
         # Adjust time between each api call
-        THRESHOLD_IN_MILLISECONDS = 100
+        THRESHOLD_IN_MILLISECONDS = 10
 
         now = datetime.now()
         threshold_in_microseconds = 1000 * THRESHOLD_IN_MILLISECONDS
