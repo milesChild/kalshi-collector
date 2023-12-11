@@ -34,8 +34,8 @@ def date_selector(polygon: bool=False) -> str:
     if now.weekday() > 4:
         next_trading_day = now + timedelta(days=3 - (now.weekday() - 4))
         date_str = next_trading_day.strftime("%b%d").upper()
-    # If it is past 4:00pm EST, we will select the next trading day's date.
-    elif now.hour >= 16:
+    # If it is past 3:55pm EST, we will select the next trading day's date.
+    elif now.hour >= 16 or (now.hour == 15 and now.minute >= 55):
         # if it is on or past friday, add the correct number of days to get to monday
         if now.weekday() >= 4:
             next_trading_day = now + timedelta(days=3 - (now.weekday() - 4))
@@ -93,6 +93,24 @@ for t in tickers:
     if t not in ndx_tickers:
         ndx_tickers.append(t)
 agg_tickers.extend(ndx_tickers)
+
+""" TSA Market """
+
+# TSA checkins over/under
+tsa_tickers = []
+
+tsa_series = "TSAW"
+
+markets = exchange_client.get_markets(**{'series_ticker': tsa_series})['markets']
+max_expiry_date = max([datetime.strptime(x['close_time'], "%Y-%m-%d") for x in markets])
+print(max_expiry_date)
+# filtered = [x for x in markets if x['close_time'] == max_expiry_date.strftime("%Y-%m-%d")]
+# tickers = [x['ticker'] for x in filtered]
+print(tickers)
+
+
+
+
 
 """ Writing to File """
 

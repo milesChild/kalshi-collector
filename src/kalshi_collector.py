@@ -1,7 +1,7 @@
 # imports
 from lib.kalshi_exchange_client import ExchangeClient
 
-KALSHIAPIBASE = "https://demo-api.kalshi.co/trade-api/v2"
+KALSHIAPIBASE = "https://trading-api.kalshi.com/trade-api/v2"
 
 class KalshiCollector():
     
