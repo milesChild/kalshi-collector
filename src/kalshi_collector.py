@@ -2,6 +2,7 @@
 from lib.kalshi_exchange_client import ExchangeClient
 
 KALSHIAPIBASE = "https://trading-api.kalshi.com/trade-api/v2"
+REDISLOCATION = ""
 
 class KalshiCollector():
     
