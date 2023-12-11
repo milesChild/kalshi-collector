@@ -18,7 +18,8 @@ if __name__ == "__main__":
         while True:
             
             try:
-                orderbooks = collector.update_orderbooks()
+                collector.update_orderbooks()
+                orderbooks = collector.orderbooks
                 for ticker, orderbook in orderbooks.items():
                     last_orderbook = last_orderbooks.get(ticker, {})
                     if last_orderbook != orderbook:
