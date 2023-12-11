@@ -3,9 +3,9 @@ import sys
 import time
 from mdp_collector import MDPCollector
 from db import DB
-from credentials import DB_USERNAME, DB_PASSWORD, DATABASE_NAME, RDS_HOSTNAME, KALSHI_EMAIL, KALSHI_PASSWORD
+from credentials import DB_USERNAME, DB_PASSWORD, DATABASE_NAME, RDS_HOSTNAME
 
-TICKERS_FILE = ""
+TICKERS_FILE = "/opt/kalshi/tickers.txt"
 
 if __name__ == "__main__":
 

@@ -94,25 +94,7 @@ for t in tickers:
         ndx_tickers.append(t)
 agg_tickers.extend(ndx_tickers)
 
-""" TSA Market """
-
-# TSA checkins over/under
-tsa_tickers = []
-
-tsa_series = "TSAW"
-
-markets = exchange_client.get_markets(**{'series_ticker': tsa_series})['markets']
-max_expiry_date = max([datetime.strptime(x['close_time'], "%Y-%m-%d") for x in markets])
-print(max_expiry_date)
-# filtered = [x for x in markets if x['close_time'] == max_expiry_date.strftime("%Y-%m-%d")]
-# tickers = [x['ticker'] for x in filtered]
-print(tickers)
-
-
-
-
-
-""" Writing to File """
+# """ Writing to File """
 
 # Write tickers to the specified TICKERS_FILE_PATH as a text file with each ticker on a new line
 with open(TICKERS_FILE_PATH, 'w') as f:
