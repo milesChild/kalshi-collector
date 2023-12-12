@@ -13,6 +13,7 @@ class DB():
     
     def push_orderbook(self, ticker: str, orderbook: dict) -> None:
         
-        orderbook_json = json.dumps(orderbook)
+        converted_dict = {key.decode('utf-8'): value.decode('utf-8') for key, value in orderbook.items()}
+        orderbook_json = json.dumps(converted_dict)
         time = datetime.now()
         self.cursor.execute("""INSERT INTO orderbooks (time, ticker, orderbook) VALUES (%s, %s, %s)""", (time, ticker, orderbook_json))
