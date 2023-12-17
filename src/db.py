@@ -15,5 +15,4 @@ class DB():
         
         converted_dict = {key.decode('utf-8'): value.decode('utf-8') for key, value in orderbook.items()}
         orderbook_json = json.dumps(converted_dict)
-        time = datetime.now()
-        self.cursor.execute("""INSERT INTO orderbooks (time, ticker, orderbook) VALUES (%s, %s, %s)""", (time, ticker, orderbook_json))
+        self.cursor.execute("""INSERT INTO orderbooks_updated (ticker, orderbook) VALUES (%s, %s)""", (ticker, orderbook_json))
