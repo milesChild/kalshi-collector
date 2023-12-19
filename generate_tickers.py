@@ -108,6 +108,7 @@ PREFIXES = [
     "NASDAQ100DU", # above/below
     "NASDAQ100D", # range
     "NASDAQ100Z", # up/down
+    "TSAW" # TSA weekly
 ]
 
 exchange_client = ExchangeClient(exchange_api_base = KALSHIAPIBASE, email = KALSHI_EMAIL, password = KALSHI_PASSWORD)
